@@ -8,6 +8,9 @@ Verilog Implementation for Xilinx Basys3 FPGA (Artix-7) | Vivado 2020+
 
 ## Overview
 
+![BIST System Block Diagram](images/bist_overview.png)
+*BIST system: Controller drives the Test Pattern Generator; patterns go to the CUT/DUT via Input Isolation; the Response Analyser outputs Pass/Fail.*
+
 Modern chips are tested using **Built-In Self-Test (BIST)** — circuits embedded on the chip itself that generate test patterns, apply them to internal logic, and check the responses, all without external test equipment. The problem: standard BIST pattern generators switch every signal on every clock cycle, consuming far more power during testing than the chip ever would in normal operation. This can cause overheating, voltage droops, and even permanent damage during production test.
 
 **PRESTO** (Probabilistic Test Pattern Generator) solves this by intelligently controlling *which* scan chains receive new patterns each cycle and *which* are frozen. Frozen chains draw no switching power. The result is dramatically lower test power with no loss in fault coverage.
@@ -27,6 +30,38 @@ This implementation realises the complete PRESTO architecture in **synthesizable
 ---
 
 ## Architecture
+
+### Basic PRESTO Architecture
+
+![Basic PRESTO Architecture](images/architecture_presto.png)
+*Fig. 4.2. Basic architecture of a PRESTO generator — PRPG feeds the weighted logic and hold latch array; the phase shifter decorrelates outputs to the scan chains.*
+
+The PRESTO generator takes pseudorandom bits from a PRPG (LFSR), passes them through weighted AND-gate logic to produce enable signals at controlled probabilities (0.5, 0.25, 0.125, 0.0625), and uses a toggle control register and hold latch array to selectively freeze scan chain inputs between patterns.
+
+---
+
+### Fully Operational PRESTO
+
+![Fully Operational PRESTO](images/fully_operational_presto.png)
+*Fig. 4.3. Fully operational version of PRESTO — adds Toggle and Hold count inputs, a Down Counter, and a T flip-flop to alternate between hold and toggle phases automatically.*
+
+The full version extends the basic architecture with:
+- **Toggle / Hold inputs** — program how long the circuit holds (freezes) and how long it toggles (generates new patterns)
+- **Down Counter** — counts down the duration of each phase
+- **T Flip-Flop** — alternates the system between hold phase and toggle phase at the end of each count
+
+---
+
+### LP Decompressor Mode
+
+![LP Decompressor](images/lp_decomposer.png)
+*Fig. 4.4. LP decompressor — modules shown in gray are disabled. Red items (Down Counter, offset, No Hold signal, First Cycle signal, Ring Generator) have been added for the LP decompressor variant.*
+
+In LP decompressor mode, the standard PRPG is replaced by a **Ring Generator**, the switching block is turned off, and additional control signals (offset, No Hold, First Cycle) are fed into the hold latch control logic to achieve further power reduction during decompressed pattern delivery.
+
+---
+
+### Module Summary
 
 The design is composed of 9 hardware modules that together implement the PRESTO BIST TPG:
 
@@ -62,6 +97,11 @@ presto-bist-tpg/
 │   └── tb_presto_bist.v         # 5-scenario self-checking testbench
 ├── constraints/
 │   └── presto_bist.xdc          # Basys3 (Artix-7) pin and timing constraints
+├── images/
+│   ├── bist_overview.png
+│   ├── architecture_presto.png
+│   ├── fully_operational_presto.png
+│   └── lp_decomposer.png
 └── README.md
 ```
 
