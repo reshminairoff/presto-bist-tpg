@@ -257,6 +257,6 @@ PRESTO BIST applies wherever test power is a concern — which in practice means
 [![GitHub stars](https://img.shields.io/github/stars/reshminairoff/presto-bist-tpg?style=social)](https://github.com/reshminairoff/presto-bist-tpg/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/reshminairoff/presto-bist-tpg?style=social)](https://github.com/reshminairoff/presto-bist-tpg/network/members)
 
-*Made with ❤️ by [Reshmi Nair](https://github.com/reshminairoff)*
+*Made with by [Reshmi Nair](https://github.com/reshminairoff)*
 
 </div>
