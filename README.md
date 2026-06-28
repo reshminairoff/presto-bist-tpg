@@ -12,7 +12,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
 > 📄 Based on: *"High-Performance Pattern Test Generator for BIST"*
-> Reshmi Nair & Nandini Maheshwari — Sathyabama Institute of Science and Technology, 2022
+> Reshmi Nair — Sathyabama Institute of Science and Technology, 2022
 
 </div>
 
