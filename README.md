@@ -42,7 +42,7 @@ The PRESTO generator takes pseudorandom bits from a PRPG (LFSR), passes them thr
 
 ### Fully Operational PRESTO
 
-![Fully Operational PRESTO](images/fully_operational_presto.png)
+![Fully Operational PRESTO](images/fully operational version  of presto.png)
 *Fig. 4.3. Fully operational version of PRESTO — adds Toggle and Hold count inputs, a Down Counter, and a T flip-flop to alternate between hold and toggle phases automatically.*
 
 The full version extends the basic architecture with:
