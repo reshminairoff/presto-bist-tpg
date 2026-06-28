@@ -33,7 +33,7 @@ This implementation realises the complete PRESTO architecture in **synthesizable
 
 ### Basic PRESTO Architecture
 
-![Basic PRESTO Architecture](images/architecture_presto.png)
+![Basic PRESTO Architecture](images/Architecture_presto .png)
 *Fig. 4.2. Basic architecture of a PRESTO generator — PRPG feeds the weighted logic and hold latch array; the phase shifter decorrelates outputs to the scan chains.*
 
 The PRESTO generator takes pseudorandom bits from a PRPG (LFSR), passes them through weighted AND-gate logic to produce enable signals at controlled probabilities (0.5, 0.25, 0.125, 0.0625), and uses a toggle control register and hold latch array to selectively freeze scan chain inputs between patterns.
