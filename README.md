@@ -234,7 +234,7 @@ This implementation serves as a complete, working reference for students and res
 
 ## 🔍 Overview
 
-![BIST System Block Diagram](images/bist_overview.png)
+![BIST System Block Diagram](images/Block_diagram.png)
 *Fig. 1 — BIST system: Controller drives the Test Pattern Generator; patterns reach the CUT/DUT via Input Isolation; the Response Analyser outputs Pass/Fail.*
 
 Modern chips are tested using **Built-In Self-Test (BIST)** — circuits embedded on the chip itself that generate test patterns, apply them to internal logic, and check responses — all without external test equipment.
@@ -268,7 +268,7 @@ This implementation realises the complete PRESTO architecture in **synthesizable
 
 ### Basic PRESTO Architecture
 
-![Basic PRESTO Architecture](images/architecture_presto.png)
+![Basic PRESTO Architecture](images/Architecture_presto.png)
 *Fig. 4.2 — Basic PRESTO generator: PRPG (LFSR) feeds weighted AND-gate logic; toggle control register and hold latch array selectively freeze scan chain inputs; phase shifter decorrelates outputs.*
 
 ---
