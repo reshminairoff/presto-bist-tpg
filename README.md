@@ -8,7 +8,7 @@ Verilog Implementation for Xilinx Basys3 FPGA (Artix-7) | Vivado 2020+
 
 ## Overview
 
-![BIST System Block Diagram](images/bist_overview.png)
+![BIST System Block Diagram](images/Block_diagram.jpeg)
 *BIST system: Controller drives the Test Pattern Generator; patterns go to the CUT/DUT via Input Isolation; the Response Analyser outputs Pass/Fail.*
 
 Modern chips are tested using **Built-In Self-Test (BIST)** — circuits embedded on the chip itself that generate test patterns, apply them to internal logic, and check the responses, all without external test equipment. The problem: standard BIST pattern generators switch every signal on every clock cycle, consuming far more power during testing than the chip ever would in normal operation. This can cause overheating, voltage droops, and even permanent damage during production test.
