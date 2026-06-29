@@ -54,21 +54,27 @@ endmodule
 // MODULE 3: Toggle Control Register
 // -----------------------------------------------------------------------------
 module toggle_ctrl_reg (
-    input  wire       clk,
-    input  wire       rst,
-    input  wire       load,
+    input  wire clk,
+    input  wire rst,
+    input  wire load,
     input  wire [7:0] shift_data,
-    input  wire       off_mode,
-    output reg  [7:0] ctrl_reg_out
+    input  wire off_mode,
+    output reg [7:0] ctrl_reg_out
 );
     always @(posedge clk) begin
         if (rst)
+        begin
             ctrl_reg_out <= 8'b1111_1111;
+        end 
         else if (off_mode)
+        begin
             ctrl_reg_out <= 8'b1111_1111;
+        end
         else if (load)
+        begin
             ctrl_reg_out <= shift_data;
-    end
+        end
+        end
 endmodule
 
 // -----------------------------------------------------------------------------
